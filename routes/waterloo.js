@@ -9,6 +9,10 @@ router.post('/', async function(req, res, next) {
   res.send(createTextResponse(response));
 });
 
+router.get('/',  function(req, res, next) {
+  res.send("Hello There");
+});
+
 async function fetchTime(code) {
   url = `https://api.uwaterloo.ca/v2/courses/SYDE/${code}/schedule.json?key=a5ff0a2ff73a21b39e22b50ef4ec8fb9`
   try{
