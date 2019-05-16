@@ -3,9 +3,9 @@ const {dialogflow} = require('actions-on-google')
 
 const WELCOME_INTENT = 'Default Welcome Intent'
 const FALLBACK_INTENT = 'Default Fallback Intent'
-// const NEED_QUOTE_INTENT = 'Need Quote'
+const NEED_CLASS_TIME = 'needClassTime'
 
-const app = dialogflow{}
+const app = dialogflow()
 
 app.intent(WELCOME_INTENT, (conv) => {
     conv.ask("Hello, I'm the UW Assistant.")
@@ -15,4 +15,8 @@ app.intent(FALLBACK_INTENT, (conv) => {
     conv.ask("I don't understand.")
 })
 
-exports.dialogflowFirebaseFulfullment = functions.https.onRequest(app)
+app.intent(NEED_CLASS_TIME, (conv) => {
+    conv.ask("Fuck off")
+})
+
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app)
