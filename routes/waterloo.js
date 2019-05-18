@@ -12,16 +12,18 @@ router.post('/', async function(req, res, next) {
 async function fetchTime(code) {
   url = `https://api.uwaterloo.ca/v2/courses/SYDE/${code}/schedule.json?key=a5ff0a2ff73a21b39e22b50ef4ec8fb9`
   try{
-  let response = await axios.get(url)
-  let time = await response.data.data[0].classes[0].date.start_time
-  return await ("Your course is at " + time)
+    let response = await axios.get(url)
+    console.log(response.data)
+    let time = await response.data.data[0].classes[0].date.start_time
+    console.log(time)
+    return await ("Your course is at " + time)
   }
   catch(e){
     console.log(e)
     return("There seems to be a problem, try again later")
   }
 }
-
+// Response Dialogflow expects 
 function createTextResponse(textResponse){
   console.log(textResponse)
   let response = {
